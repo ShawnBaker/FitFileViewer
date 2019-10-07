@@ -65,6 +65,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\exercise.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fit">
       <HintPath>..\StagesCsvToFit\Fit.dll</HintPath>
@@ -97,7 +100,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FitFile.cs" />
+    <Compile Include="FitLib\FitActivity.cs" />
+    <Compile Include="FitLib\FitDeviceInfo.cs" />
+    <Compile Include="FitLib\FitFile.cs" />
+    <Compile Include="FitLib\FitFileID.cs" />
+    <Compile Include="FitLib\FitLap.cs" />
+    <Compile Include="FitLib\FitLength.cs" />
+    <Compile Include="FitLib\FitRecord.cs" />
+    <Compile Include="FitLib\FitRecordSummary.cs" />
+    <Compile Include="FitLib\FitSession.cs" />
+    <Compile Include="FitLib\FitUserProfile.cs" />
+    <Compile Include="FitLib\FitMessage.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -134,10 +147,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\spinning-list-32.png" />
-    <Resource Include="Images\spinning-list.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
@@ -148,6 +157,10 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\exercise-32.png" />
+    <Resource Include="Images\exercise.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

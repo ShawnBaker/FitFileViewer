@@ -70,11 +70,20 @@ namespace FitFileViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Activities.
+        ///   Looks up a localized string similar to Activity.
         /// </summary>
-        public static string Activities {
+        public static string Activity {
             get {
-                return ResourceManager.GetString("Activities", resourceCulture);
+                return ResourceManager.GetString("Activity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Age.
+        /// </summary>
+        public static string Age {
+            get {
+                return ResourceManager.GetString("Age", resourceCulture);
             }
         }
         
@@ -88,51 +97,11 @@ namespace FitFileViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ave
-        ///Cadence.
-        /// </summary>
-        public static string AveCadence {
-            get {
-                return ResourceManager.GetString("AveCadence", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ave
-        ///HR.
-        /// </summary>
-        public static string AveHeartRate {
-            get {
-                return ResourceManager.GetString("AveHeartRate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ave
-        ///Power.
-        /// </summary>
-        public static string AvePower {
-            get {
-                return ResourceManager.GetString("AvePower", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Average.
         /// </summary>
         public static string Average {
             get {
                 return ResourceManager.GetString("Average", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ave
-        ///Speed.
-        /// </summary>
-        public static string AveSpeed {
-            get {
-                return ResourceManager.GetString("AveSpeed", resourceCulture);
             }
         }
         
@@ -146,11 +115,20 @@ namespace FitFileViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Calories.
+        ///   Looks up a localized string similar to Device.
         /// </summary>
-        public static string Calories {
+        public static string Device {
             get {
-                return ResourceManager.GetString("Calories", resourceCulture);
+                return ResourceManager.GetString("Device", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device Info.
+        /// </summary>
+        public static string DeviceInfo {
+            get {
+                return ResourceManager.GetString("DeviceInfo", resourceCulture);
             }
         }
         
@@ -164,12 +142,20 @@ namespace FitFileViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Elapsed
-        ///Time.
+        ///   Looks up a localized string similar to File.
         /// </summary>
-        public static string ElapsedTime {
+        public static string File {
             get {
-                return ResourceManager.GetString("ElapsedTime", resourceCulture);
+                return ResourceManager.GetString("File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File ID.
+        /// </summary>
+        public static string FileID {
+            get {
+                return ResourceManager.GetString("FileID", resourceCulture);
             }
         }
         
@@ -183,11 +169,11 @@ namespace FitFileViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First.
+        ///   Looks up a localized string similar to Gender.
         /// </summary>
-        public static string First {
+        public static string Gender {
             get {
-                return ResourceManager.GetString("First", resourceCulture);
+                return ResourceManager.GetString("Gender", resourceCulture);
             }
         }
         
@@ -237,6 +223,15 @@ namespace FitFileViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lap.
+        /// </summary>
+        public static string Lap {
+            get {
+                return ResourceManager.GetString("Lap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Laps.
         /// </summary>
         public static string Laps {
@@ -246,11 +241,11 @@ namespace FitFileViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Last.
+        ///   Looks up a localized string similar to Length.
         /// </summary>
-        public static string Last {
+        public static string Length {
             get {
-                return ResourceManager.GetString("Last", resourceCulture);
+                return ResourceManager.GetString("Length", resourceCulture);
             }
         }
         
@@ -273,26 +268,6 @@ namespace FitFileViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Max
-        ///Cadence.
-        /// </summary>
-        public static string MaxCadence {
-            get {
-                return ResourceManager.GetString("MaxCadence", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Max
-        ///HR.
-        /// </summary>
-        public static string MaxHeartRate {
-            get {
-                return ResourceManager.GetString("MaxHeartRate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Maximum.
         /// </summary>
         public static string Maximum {
@@ -302,22 +277,11 @@ namespace FitFileViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Max
-        ///Power.
+        ///   Looks up a localized string similar to Messages.
         /// </summary>
-        public static string MaxPower {
+        public static string Messages {
             get {
-                return ResourceManager.GetString("MaxPower", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Max
-        ///Speed.
-        /// </summary>
-        public static string MaxSpeed {
-            get {
-                return ResourceManager.GetString("MaxSpeed", resourceCulture);
+                return ResourceManager.GetString("Messages", resourceCulture);
             }
         }
         
@@ -327,6 +291,15 @@ namespace FitFileViewer.Properties {
         public static string MITLink {
             get {
                 return ResourceManager.GetString("MITLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
@@ -367,6 +340,15 @@ namespace FitFileViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Product Name.
+        /// </summary>
+        public static string ProductName {
+            get {
+                return ResourceManager.GetString("ProductName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Record.
         /// </summary>
         public static string Record {
@@ -394,6 +376,15 @@ namespace FitFileViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Session.
+        /// </summary>
+        public static string Session {
+            get {
+                return ResourceManager.GetString("Session", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sessions.
         /// </summary>
         public static string Sessions {
@@ -408,25 +399,6 @@ namespace FitFileViewer.Properties {
         public static string Speed {
             get {
                 return ResourceManager.GetString("Speed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Start
-        ///Time.
-        /// </summary>
-        public static string StartTime {
-            get {
-                return ResourceManager.GetString("StartTime", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Summary.
-        /// </summary>
-        public static string Summary {
-            get {
-                return ResourceManager.GetString("Summary", resourceCulture);
             }
         }
         
@@ -449,6 +421,15 @@ namespace FitFileViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Timer Time.
+        /// </summary>
+        public static string TimerTime {
+            get {
+                return ResourceManager.GetString("TimerTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type.
         /// </summary>
         public static string Type {
@@ -458,11 +439,47 @@ namespace FitFileViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unknown ({0}).
+        /// </summary>
+        public static string UnknownValue {
+            get {
+                return ResourceManager.GetString("UnknownValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Profile.
+        /// </summary>
+        public static string UserProfile {
+            get {
+                return ResourceManager.GetString("UserProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
         public static string Version {
             get {
                 return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weight.
+        /// </summary>
+        public static string Weight {
+            get {
+                return ResourceManager.GetString("Weight", resourceCulture);
             }
         }
     }

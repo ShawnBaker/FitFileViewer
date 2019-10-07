@@ -1,4 +1,5 @@
-﻿<Window x:Class="FitFileViewer.MainWindow"
+﻿<!-- Copyright © 2019 Shawn Baker using the MIT License. -->
+<Window x:Class="FitFileViewer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,8 +9,8 @@
 		mc:Ignorable="d"
 		Title="{x:Static p:Resources.AppName}"
 		WindowStartupLocation="CenterScreen"
-        Height="600" Width="600"
-		Icon="Images/spinning-list.ico">
+        Height="600" Width="900"
+		Icon="Images/exercise.ico">
 	<Window.Resources>
 		<Style TargetType="ListViewItem">
 			<Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -17,11 +18,6 @@
 	</Window.Resources>
 	<Grid Margin="10">
 		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
@@ -38,28 +34,19 @@
 			</Grid.ColumnDefinitions>
 			<TextBox Name="FileNameTextBox" IsReadOnly="True" Margin="5,0,0,0" VerticalAlignment="Center"/>
 			<Button Grid.Column="1" Width="20" Height="20" Margin="5,0,0,0" Content="..." Click="OpenFileButton_Click"/>
-			<Button Grid.Column="2" Width="20" Height="20" Margin="5,0,0,0" Content="?" Click="AboutButton_Click"/>
+			<Button Grid.Column="2" Width="20" Height="20" Margin="5,0,5,0" Content="?" Click="AboutButton_Click"/>
 		</Grid>
-		<Label Grid.Row="1" Content="{x:Static p:Resources.Type}"/>
-		<Label Name="TypesLabel" Grid.Row="1" Grid.Column="1"/>
-		<Label Grid.Row="2" Content="Manufacturer"/>
-		<Label Name="ManufacturerLabel" Grid.Row="2" Grid.Column="1"/>
-		<Label Grid.Row="3" Content="{x:Static p:Resources.Product}"/>
-		<Label Name="ProductLabel" Grid.Row="3" Grid.Column="1"/>
-		<Label Grid.Row="4" Content="{x:Static p:Resources.SerialNumber}"/>
-		<Label Name="SerialNumberLabel" Grid.Row="4" Grid.Column="1"/>
-		<Label Grid.Row="5" Content="{x:Static p:Resources.TimeCreated}"/>
-		<Label Name="CreationTimeLabel" Grid.Row="5" Grid.Column="1"/>
-		<TabControl Grid.Row="6" Grid.ColumnSpan="2" Margin="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-			<TabItem Header="{x:Static p:Resources.Summary}">
+		<TabControl Grid.Row="1" Grid.ColumnSpan="2" Margin="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<TabItem Header="{x:Static p:Resources.File}">
 				<Grid Margin="5">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="Auto"/>
 					</Grid.ColumnDefinitions>
-					<Grid Grid.Column="0" Margin="5">
+					<DataGrid Margin="5" AutoGenerateColumns="True" Name="FileIDDataGrid" BorderThickness="0" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray"/>
+					<Grid Grid.Column="1" Margin="30,0,0,0">
 						<Grid.RowDefinitions>
-							<RowDefinition Height="Auto"/>
 							<RowDefinition Height="Auto"/>
 							<RowDefinition Height="Auto"/>
 							<RowDefinition Height="Auto"/>
@@ -70,24 +57,22 @@
 						</Grid.RowDefinitions>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition Width="70"/>
+							<ColumnDefinition Width="110"/>
 						</Grid.ColumnDefinitions>
-						<Label Grid.Row="0" Grid.Column="0" Content="{x:Static p:Resources.Records}"/>
+						<Label Grid.Row="0" Content="{x:Static p:Resources.Records}"/>
 						<Label Name="NumRecordsLabel" Grid.Row="0" Grid.Column="1" Content="0"/>
-						<Label Grid.Row="1" Grid.Column="0" Content="{x:Static p:Resources.Lengths}"/>
+						<Label Grid.Row="1" Content="{x:Static p:Resources.Lengths}"/>
 						<Label Name="NumLengthsLabel" Grid.Row="1" Grid.Column="1" Content="0"/>
-						<Label Grid.Row="2" Grid.Column="0" Content="{x:Static p:Resources.Laps}"/>
+						<Label Grid.Row="2" Content="{x:Static p:Resources.Laps}"/>
 						<Label Name="NumLapsLabel" Grid.Row="2" Grid.Column="1" Content="0"/>
-						<Label Grid.Row="3" Grid.Column="0" Content="{x:Static p:Resources.Sessions}"/>
+						<Label Grid.Row="3" Content="{x:Static p:Resources.Sessions}"/>
 						<Label Name="NumSessionsLabel" Grid.Row="3" Grid.Column="1" Content="0"/>
-						<Label Grid.Row="4" Grid.Column="0" Content="{x:Static p:Resources.Activities}"/>
-						<Label Name="NumActivitiesLabel" Grid.Row="4" Grid.Column="1" Content="0"/>
-						<Label Grid.Row="5" Grid.Column="0" Content="{x:Static p:Resources.Time}"/>
-						<Label Name="TimeLabel" Grid.Row="5" Grid.Column="1" Content="0"/>
-						<Label Grid.Row="6" Grid.Column="0" Content="{x:Static p:Resources.Distance}"/>
-						<Label Name="DistanceLabel" Grid.Row="6" Grid.Column="1" Content="0"/>
+						<Label Grid.Row="4" Content="{x:Static p:Resources.Time}"/>
+						<Label Name="TimeLabel" Grid.Row="4" Grid.Column="1" Content="0"/>
+						<Label Grid.Row="5" Content="{x:Static p:Resources.Distance}"/>
+						<Label Name="DistanceLabel" Grid.Row="5" Grid.Column="1" Content="0"/>
 					</Grid>
-					<Grid Grid.Column="1" Margin="20,0,5,0">
+					<Grid Grid.Column="2">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto"/>
 							<RowDefinition Height="Auto"/>
@@ -119,526 +104,29 @@
 					</Grid>
 				</Grid>
 			</TabItem>
-			<TabItem Header="{x:Static p:Resources.Records}">
-				<ListView x:Name="RecordsList">
-					<ListView.View>
-						<GridView>
-							<GridViewColumn Header="{x:Static p:Resources.Record}">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock TextAlignment="Center">
-											<TextBlock.Text>
-												<Binding>
-													<Binding.Converter>
-														<local:RecordNumberConverter DataContext="{Binding Source={x:Reference RecordsList}, Path=(ItemsControl.ItemsSource)}" />
-													</Binding.Converter>
-												</Binding>
-											</TextBlock.Text>
-										</TextBlock>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.Time}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding ElapsedTime}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.Distance}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding Distance, StringFormat={}{0:0.00}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.Cadence}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding Cadence}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.HeartRate}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding HeartRate}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.Power}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding Power}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.Speed}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding Speed, StringFormat={}{0:0.00}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-						</GridView>
-					</ListView.View>
-				</ListView>
+			<TabItem Header="{x:Static p:Resources.Device}">
+				<DataGrid Margin="5" AutoGenerateColumns="True" AutoGeneratingColumn="DeviceInfoDataGrid_AutoGeneratingColumn" Name="DeviceInfoDataGrid" BorderThickness="0" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray"/>
 			</TabItem>
-			<TabItem Header="{x:Static p:Resources.Lengths}">
-				<ListView x:Name="LengthsList">
-					<ListView.View>
-						<GridView>
-							<GridViewColumn Header="{x:Static p:Resources.Record}">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock TextAlignment="Center">
-											<TextBlock.Text>
-												<Binding>
-													<Binding.Converter>
-														<local:RecordNumberConverter DataContext="{Binding Source={x:Reference LengthsList}, Path=(ItemsControl.ItemsSource)}" />
-													</Binding.Converter>
-												</Binding>
-											</TextBlock.Text>
-										</TextBlock>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.First}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding FirstRecord}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.Last}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding LastRecord}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.StartTime}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding StartTime, StringFormat={}{0:HH:mm:ss}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.ElapsedTime}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding ElapsedTime}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AveSpeed}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AveSpeed, StringFormat={}{0:0.00}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxSpeed}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxSpeed, StringFormat={}{0:0.00}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AvePower}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AvePower, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxPower}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxPower, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AveCadence}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AveCadence, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxCadence}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxCadence, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AveHeartRate}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AveHeartRate, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxHeartRate}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxHeartRate, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-						</GridView>
-					</ListView.View>
-				</ListView>
+			<TabItem Header="{x:Static p:Resources.User}">
+				<DataGrid Margin="5" AutoGenerateColumns="True" Name="UserProfileDataGrid" BorderThickness="0" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray"/>
 			</TabItem>
-			<TabItem Header="{x:Static p:Resources.Laps}">
-				<ListView x:Name="LapsList">
-					<ListView.View>
-						<GridView>
-							<GridViewColumn Header="{x:Static p:Resources.Record}">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock TextAlignment="Center">
-											<TextBlock.Text>
-												<Binding>
-													<Binding.Converter>
-														<local:RecordNumberConverter DataContext="{Binding Source={x:Reference LapsList}, Path=(ItemsControl.ItemsSource)}" />
-													</Binding.Converter>
-												</Binding>
-											</TextBlock.Text>
-										</TextBlock>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.First}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding FirstRecord}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.Last}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding LastRecord}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.StartTime}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding StartTime, StringFormat={}{0:HH:mm:ss}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.ElapsedTime}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding ElapsedTime}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.Distance}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding Distance, StringFormat={}{0:0.00}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AveSpeed}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AveSpeed, StringFormat={}{0:0.00}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxSpeed}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxSpeed, StringFormat={}{0:0.00}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AvePower}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AvePower, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxPower}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxPower, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AveCadence}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AveCadence, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxCadence}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxCadence, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AveHeartRate}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AveHeartRate, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxHeartRate}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxHeartRate, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.Calories}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding Calories}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-						</GridView>
-					</ListView.View>
-				</ListView>
+			<TabItem Header="{x:Static p:Resources.Activity}">
+				<DataGrid Margin="5" AutoGenerateColumns="True" Name="ActivityDataGrid" BorderThickness="0" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray"/>
 			</TabItem>
 			<TabItem Header="{x:Static p:Resources.Sessions}">
-				<ListView x:Name="SessionsList">
-					<ListView.View>
-						<GridView>
-							<GridViewColumn Header="{x:Static p:Resources.Record}">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock TextAlignment="Center">
-											<TextBlock.Text>
-												<Binding>
-													<Binding.Converter>
-														<local:RecordNumberConverter DataContext="{Binding Source={x:Reference SessionsList}, Path=(ItemsControl.ItemsSource)}" />
-													</Binding.Converter>
-												</Binding>
-											</TextBlock.Text>
-										</TextBlock>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.First}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding FirstRecord}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.Last}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding LastRecord}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.StartTime}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding StartTime, StringFormat={}{0:HH:mm:ss}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.ElapsedTime}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding ElapsedTime}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.Distance}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding Distance, StringFormat={}{0:0.00}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AveSpeed}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AveSpeed, StringFormat={}{0:0.00}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxSpeed}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxSpeed, StringFormat={}{0:0.00}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AvePower}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AvePower, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxPower}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxPower, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AveCadence}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AveCadence, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxCadence}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxCadence, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AveHeartRate}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AveHeartRate, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxHeartRate}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxHeartRate, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.Calories}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding Calories}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-						</GridView>
-					</ListView.View>
-				</ListView>
+				<DataGrid Margin="5" AutoGenerateColumns="True" AutoGeneratingColumn="SessionsDataGrid_AutoGeneratingColumn" Name="SessionsDataGrid" BorderThickness="0" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray"/>
 			</TabItem>
-			<TabItem Header="{x:Static p:Resources.Activities}">
-				<ListView x:Name="ActivitiesList">
-					<ListView.View>
-						<GridView>
-							<GridViewColumn Header="{x:Static p:Resources.Record}">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock TextAlignment="Center">
-											<TextBlock.Text>
-												<Binding>
-													<Binding.Converter>
-														<local:RecordNumberConverter DataContext="{Binding Source={x:Reference ActivitiesList}, Path=(ItemsControl.ItemsSource)}" />
-													</Binding.Converter>
-												</Binding>
-											</TextBlock.Text>
-										</TextBlock>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.First}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding FirstRecord}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.Last}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding LastRecord}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.StartTime}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding StartTime, StringFormat={}{0:HH:mm:ss}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.ElapsedTime}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding ElapsedTime}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AveSpeed}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AveSpeed, StringFormat={}{0:0.00}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxSpeed}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxSpeed, StringFormat={}{0:0.00}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AvePower}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AvePower, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxPower}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxPower, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AveCadence}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AveCadence, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxCadence}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxCadence, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.AveHeartRate}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding AveHeartRate, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-							<GridViewColumn Header="{x:Static p:Resources.MaxHeartRate}" Width="70">
-								<GridViewColumn.CellTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding MaxHeartRate, StringFormat={}{0:0}}" TextAlignment="Center"/>
-									</DataTemplate>
-								</GridViewColumn.CellTemplate>
-							</GridViewColumn>
-						</GridView>
-					</ListView.View>
-				</ListView>
+			<TabItem Header="{x:Static p:Resources.Laps}">
+				<DataGrid Margin="5" AutoGenerateColumns="True" AutoGeneratingColumn="LapsDataGrid_AutoGeneratingColumn" Name="LapsDataGrid" BorderThickness="0" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray"/>
+			</TabItem>
+			<TabItem Header="{x:Static p:Resources.Lengths}">
+				<DataGrid Margin="5" AutoGenerateColumns="True" AutoGeneratingColumn="LengthsDataGrid_AutoGeneratingColumn" Name="LengthsDataGrid" BorderThickness="0" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray"/>
+			</TabItem>
+			<TabItem Header="{x:Static p:Resources.Records}">
+				<DataGrid Margin="5" AutoGenerateColumns="True" AutoGeneratingColumn="RecordsDataGrid_AutoGeneratingColumn" LoadingRow="RecordsDataGrid_LoadingRow" Name="RecordsDataGrid" BorderThickness="0" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray"/>
+			</TabItem>
+			<TabItem Header="{x:Static p:Resources.Messages}">
+				<DataGrid Margin="5" AutoGenerateColumns="True" Name="MessagesDataGrid" BorderThickness="0" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray"/>
 			</TabItem>
 		</TabControl>
 	</Grid>
