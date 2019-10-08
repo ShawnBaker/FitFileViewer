@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="FitFileViewer.exe" version="1.0.1.0" publicKeyToken="e6ef64bb406ac5ed" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="Images\exercise.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="FitFileViewer" version="1.0.1.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="FitFileViewer.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Fit.dll" size="510976">
+      <assemblyIdentity name="Fit" version="1.0.0.33967" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>5kPGl7E/I69q9udRGCLXNTKJk3aAz24Xhq4YcW7aTjY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FitFileViewer.exe" size="314296">
+      <assemblyIdentity name="FitFileViewer" version="1.0.1.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>7rKzHlKkxDi5y4MiiWZDSvQvaWwPNpcjVUvE5r/klpc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="FitFileViewer.exe.config" size="929">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>acHnlm0KwKGK7We4z5ssPsxwYyq//k4PDDCVVquxx94=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Images\exercise.ico" size="95958">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>iJ7aLb1fqLDT+ztg7iTRfR7iaDEGPknNw1dZqu721K4=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=SNOWBALL\shawn" issuerKeyHash="413633bb378837d231cc406d4b7e63787cc18485" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>0sepFxEOcnx5ndKqUF9s0KGn9Ui/G8+58wAxg9xj3gY=</DigestValue></Reference></SignedInfo><SignatureValue>I09Bv+HBXyKbUAbvSfAHQHGCdyfR2vIQ+ABtn1bu82HdQAzd0O+TTQOdSGd2ejFaJQhZKKaG7jcqXQPwEj6lDBF4L2s2WsTeAGEH8Fnp5Ph6SAHD3+0nQGJN5ysYmxwZy6TiKMkuPvkvGDABU8HZyDvf7pf539dqDMHgoRTU9Xs=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>4HQSd5UkOWwn/8xdov3BCu6BUDyimkXTA5KgtQDvJ/sqdizWjNWqnoKNcWwZWRnUsoMDgYrMBlESivhoBigLUtg5SN0NU4rr4OtZ3wi6fvLGjG3cJU7AqUdHvERGDqaGe0Y52HfqOl71TGww35uXLoJkznW2JBK1NGMWTnl2Hy0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="06de63dc833100f3b9cf1bbf48f5a7a1d06c5f50aad29d797c720e1117a9c7d2" Description="" Url=""><as:assemblyIdentity name="FitFileViewer.exe" version="1.0.1.0" publicKeyToken="e6ef64bb406ac5ed" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=SNOWBALL\shawn</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>w3PmWMZ4f6ZWO4Z5oY1CUONrByVNrmNTYqESxjM5vBM=</DigestValue></Reference></SignedInfo><SignatureValue>VR9UOn+IIRkLPluIzy1AQnEjXdbd2clu7pNDMvo7tLN4OsBHdnrBfeyCZ2kvIqmv9yJsXLvhtW4QL/eKeiwDC5k07llZ7g0QiqNpx92Q2rpmgKcC0AM1uHWy7cxq2XCAHNO69E8s1R4S90SjWNoT1I23CRBjgdzuQSaXF7XTns0=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>4HQSd5UkOWwn/8xdov3BCu6BUDyimkXTA5KgtQDvJ/sqdizWjNWqnoKNcWwZWRnUsoMDgYrMBlESivhoBigLUtg5SN0NU4rr4OtZ3wi6fvLGjG3cJU7AqUdHvERGDqaGe0Y52HfqOl71TGww35uXLoJkznW2JBK1NGMWTnl2Hy0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB0TCCATqgAwIBAgIQVumzptPvMqhFBywD6E12rDANBgkqhkiG9w0BAQsFADAnMSUwIwYDVQQDHhwAUwBOAE8AVwBCAEEATABMAFwAcwBoAGEAdwBuMB4XDTE5MTAwMjA0NDQwN1oXDTIwMTAwMTEwNDQwN1owJzElMCMGA1UEAx4cAFMATgBPAFcAQgBBAEwATABcAHMAaABhAHcAbjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA4HQSd5UkOWwn/8xdov3BCu6BUDyimkXTA5KgtQDvJ/sqdizWjNWqnoKNcWwZWRnUsoMDgYrMBlESivhoBigLUtg5SN0NU4rr4OtZ3wi6fvLGjG3cJU7AqUdHvERGDqaGe0Y52HfqOl71TGww35uXLoJkznW2JBK1NGMWTnl2Hy0CAwEAATANBgkqhkiG9w0BAQsFAAOBgQBLmy9jHx3xKlom9HfmaY0ePCRIuU+WKpupYJDTvBwtHlds1CmR6jg6jj2vt/EwxRMLw2CCOkXgmRPqooNJrnRPmhdHTylLB86dMOpD37bcGxerex7RkunAQ+pjBsA/J7TtPY8wnbfzBrbwjUDckWsuV6Q+Tbyt+n+xgavM9fW+yw==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
